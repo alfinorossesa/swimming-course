@@ -1,0 +1,9 @@
+input.form-control::placeholder{
+  font-size: 12px;
+  color: rgba(104, 104, 104, 0.397);
+}
+
+textarea.form-control::placeholder{
+  font-size: 12px;
+  color: rgba(104, 104, 104, 0.397);
+}
