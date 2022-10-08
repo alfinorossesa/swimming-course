@@ -22,4 +22,9 @@ class JadwalLatihanResource extends JsonResource
             'lokasi' => $this->lokasi,
         ];
     }
+
+    public function with($request)
+    {
+        return ['message' => 'sukses'];
+    }
 }

@@ -28,9 +28,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('informasi', [InformasiController::class, 'index'])->name('api.getInformasi');
 
     Route::get('jadwal-latihan', [JadwalLatihanController::class, 'index'])->name('api.getJadwalLatihan');
+    Route::post('jadwal-latihan', [JadwalLatihanController::class, 'store'])->name('api.storeJadwalLatihan');
     Route::put('jadwal-latihan/{id}/update', [JadwalLatihanController::class, 'update'])->name('api.updateJadwalLatihan');
 
     Route::get('perkembangan-siswa', [PerkembanganSiswaController::class, 'index'])->name('api.getPerkembanganSiswa');
+    Route::post('perkembangan-siswa', [PerkembanganSiswaController::class, 'store'])->name('api.storePerkembanganSiswa');
     Route::put('perkembangan-siswa/{id}/update', [PerkembanganSiswaController::class, 'update'])->name('api.updatePerkembanganSiswa');
 
 });
