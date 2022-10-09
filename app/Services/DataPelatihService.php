@@ -19,7 +19,7 @@ class DataPelatihService
             'alamat' => $request->alamat,
             'foto' => $nama_foto,
             'username' => $request->username,
-            'password' => bcrypt($request->password)
+            'password' => $request->password
         ]);
     }
 

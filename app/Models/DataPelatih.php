@@ -19,6 +19,11 @@ class DataPelatih extends Authenticatable
         'remember_token',
     ];
 
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
+
     public function jadwalLatihan()
     {
         return $this->hasMany(DataJadwalLatihan::class, 'pelatih_id');
