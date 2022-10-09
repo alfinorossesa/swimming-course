@@ -19,6 +19,13 @@ class PerkembanganSiswaController extends Controller
         return PerkembanganLatihanResource::collection($dataPerkembangan);
     }
 
+    public function bySiswa($id)
+    {
+        $dataPerkembangan = DataPerkembanganSiswa::where('siswa_id', $id)->orWhere('tanggal_latihan', $id)->get();
+
+        return PerkembanganLatihanResource::collection($dataPerkembangan);
+    }
+
     public function store(DataPerkembanganSiswaRequest $request)
     {
         try {

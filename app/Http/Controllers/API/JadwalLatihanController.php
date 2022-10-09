@@ -7,6 +7,7 @@ use App\Http\Requests\DataJadwalLatihanRequest;
 use App\Http\Resources\JadwalLatihanResource;
 use App\Models\DataJadwalLatihan;
 use App\Models\DataPelatih;
+use App\Models\DataSiswa;
 use Illuminate\Http\Request;
 
 class JadwalLatihanController extends Controller
@@ -21,6 +22,13 @@ class JadwalLatihanController extends Controller
     public function store(DataJadwalLatihanRequest $request)
     {
         try {
+            if (DataSiswa::find($request->siswa_id) == null) {
+                return response()->json([
+                    'message' => 'error',
+                    'siswa_id' => 'siswa not found' 
+                ], 404);
+            }
+            
             if (DataPelatih::find($request->pelatih_id) == null) {
                 return response()->json([
                     'message' => 'error',

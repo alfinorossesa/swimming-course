@@ -15,4 +15,9 @@ class DataJadwalLatihan extends Model
     {
         return $this->belongsTo(DataPelatih::class, 'pelatih_id');
     }
+
+    public function siswa()
+    {
+        return $this->belongsTo(DataSiswa::class, 'siswa_id');
+    }
 }

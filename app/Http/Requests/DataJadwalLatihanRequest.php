@@ -25,6 +25,7 @@ class DataJadwalLatihanRequest extends FormRequest
     {
         return [
             'pelatih_id' => 'required',
+            'siswa_id' => 'required',
             'hari' => 'required',
             'jam' => 'required',
             'lokasi' => 'required'

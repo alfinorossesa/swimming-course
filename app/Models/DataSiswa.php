@@ -30,6 +30,11 @@ class DataSiswa extends Authenticatable
         return $this->hasMany(DataPembayaran::class, 'siswa_id');
     }
 
+    public function jadwalLatihan()
+    {
+        return $this->hasMany(DataJadwalLatihan::class, 'siswa_id');
+    }
+
     public function perkembanganSiswa()
     {
         return $this->hasMany(DataPerkembanganSiswa::class, 'siswa_id');

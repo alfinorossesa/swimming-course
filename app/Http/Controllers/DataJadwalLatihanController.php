@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\DataJadwalLatihanRequest;
 use App\Models\DataJadwalLatihan;
 use App\Models\DataPelatih;
+use App\Models\DataSiswa;
 use Illuminate\Http\Request;
 
 class DataJadwalLatihanController extends Controller
@@ -19,8 +20,9 @@ class DataJadwalLatihanController extends Controller
     public function create()
     {
         $pelatih = DataPelatih::latest()->get();
+        $siswa = DataSiswa::latest()->get();
 
-        return view('admin.data-jadwal-latihan.create', compact('pelatih'));
+        return view('admin.data-jadwal-latihan.create', compact('pelatih', 'siswa'));
     }
 
     public function store(DataJadwalLatihanRequest $request)
@@ -33,8 +35,9 @@ class DataJadwalLatihanController extends Controller
     public function edit(DataJadwalLatihan $jadwalLatihan)
     {
         $pelatih = DataPelatih::latest()->get();
+        $siswa = DataSiswa::latest()->get();
 
-        return view('admin.data-jadwal-latihan.edit', compact('jadwalLatihan', 'pelatih'));
+        return view('admin.data-jadwal-latihan.edit', compact('jadwalLatihan', 'pelatih', 'siswa'));
     }
 
     public function update(DataJadwalLatihanRequest $request, DataJadwalLatihan $jadwalLatihan)

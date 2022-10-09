@@ -32,6 +32,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('jadwal-latihan/{id}/update', [JadwalLatihanController::class, 'update'])->name('api.updateJadwalLatihan');
 
     Route::get('perkembangan-siswa', [PerkembanganSiswaController::class, 'index'])->name('api.getPerkembanganSiswa');
+    Route::get('perkembangan-siswa/{id}', [PerkembanganSiswaController::class, 'bySiswa'])->name('api.getPerkembanganSiswaBySiswa');
     Route::post('perkembangan-siswa', [PerkembanganSiswaController::class, 'store'])->name('api.storePerkembanganSiswa');
     Route::put('perkembangan-siswa/{id}/update', [PerkembanganSiswaController::class, 'update'])->name('api.updatePerkembanganSiswa');
 

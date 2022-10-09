@@ -31,6 +31,20 @@
                     @enderror     
                 </div>  
                 <div class="mb-3">
+                    <label for="siswa_id">Siswa</label>
+                    <select class="custom-select @error('siswa_id') is-invalid @enderror" name="siswa_id" id="siswa_id" required>
+                        <option selected disabled>Pilih Siswa</option>
+                        @foreach ($siswa as $item)
+                            <option value="{{ $item->id }}" {{ $item->id == $jadwalLatihan->siswa_id ? 'selected' : '' }}>{{ $item->nama }}</option>
+                        @endforeach
+                    </select>
+                    @error('siswa_id')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror     
+                </div>  
+                <div class="mb-3">
                     <label for="hari">Hari</label>
                     <input type="date" class="form-control @error('hari') is-invalid @enderror" id="hari" name="hari" value="{{ old('hari', $jadwalLatihan->hari) }}" required>
                     @error('hari')

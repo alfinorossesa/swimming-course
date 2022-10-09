@@ -19,6 +19,7 @@
                     <thead>
                         <tr>
                             <th>No.</th>
+                            <th>Nama Siswa</th>
                             <th>Nama Pelatih</th>
                             <th>Hari</th>
                             <th>Jam</th>
@@ -30,6 +31,7 @@
                         @foreach ($jadwalLatihan as $item)
                             <tr>
                                 <td>{{ $loop->iteration }}.</td>
+                                <td>{{ $item->siswa->nama }}</td>
                                 <td>{{ $item->pelatih->nama }}</td>
                                 <td>{{ date('d-M-Y', strtotime($item->hari)) }}</td>
                                 <td>{{ date('H:i', strtotime($item->jam)) }} WIB</td>
