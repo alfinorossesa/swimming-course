@@ -17,15 +17,6 @@
         </a>
     </li>
 
-    @if (auth()->user()->username == 'admin')
-        <li class="nav-item {{ request()->is('data-admin*') ? 'active' : '' }}">
-            <a class="nav-link" href="{{ route('data-admin.index') }}">
-                <i class="fas fa-fw fa-folder"></i>
-                <span>Olah Data Admin</span>
-            </a>
-        </li>
-    @endif
-
     <li class="nav-item {{ request()->is('data-pelatih*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('data-pelatih.index') }}">
             <i class="fas fa-fw fa-folder"></i>

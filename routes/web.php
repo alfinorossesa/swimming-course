@@ -22,12 +22,10 @@ Route::middleware(['auth', 'isAdmin'])->group(function(){
     Route::get('/', BerandaController::class)->name('beranda');
 
     Route::group(['prefix' => 'data-admin', 'as' => 'data-admin.'], function(){
-        Route::get('/', [DataAdminController::class, 'index'])->name('index');
-        Route::get('/tambah-admin', [DataAdminController::class, 'create'])->name('create');
-        Route::post('/tambah-admin', [DataAdminController::class, 'store'])->name('store');
-        Route::get('/{user}/edit', [DataAdminController::class, 'edit'])->name('edit');
-        Route::put('/{user}/edit', [DataAdminController::class, 'update'])->name('update');
-        Route::delete('/{user}/delete', [DataAdminController::class, 'destroy'])->name('destroy');
+        Route::get('/{user}/profile', [DataAdminController::class, 'profile'])->name('profile');
+        Route::put('/{user}/profile', [DataAdminController::class, 'updateProfile'])->name('updateProfile');
+        Route::get('/{user}/ganti-password', [DataAdminController::class, 'gantiPassword'])->name('gantiPassword');
+        Route::put('/{user}/ganti-password', [DataAdminController::class, 'updatePassword'])->name('updatePassword');
     });
 
     Route::group(['prefix' => 'data-pelatih', 'as' => 'data-pelatih.'], function(){
@@ -53,6 +51,8 @@ Route::middleware(['auth', 'isAdmin'])->group(function(){
         Route::get('/', [DataPembayaranController::class, 'index'])->name('index');
         Route::get('/tambah-pembayaran', [DataPembayaranController::class, 'create'])->name('create');
         Route::post('/tambah-pembayaran', [DataPembayaranController::class, 'store'])->name('store');
+        Route::get('/{dataPembayaran}/edit', [DataPembayaranController::class, 'edit'])->name('edit');
+        Route::put('/{dataPembayaran}/edit', [DataPembayaranController::class, 'update'])->name('update');
         Route::delete('/{pembayaran}/delete', [DataPembayaranController::class, 'destroy'])->name('destroy');
     });
 

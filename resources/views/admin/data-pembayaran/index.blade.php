@@ -7,7 +7,7 @@
     {{-- alert --}}
     @include('admin.alerts.alert')
 
-    <div class="card shadow mb-4">
+    <div class="card shadow mb-5">
         <div class="card-header py-3">
             <a href="{{ route('data-pembayaran.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                 <i class="fas fa-plus fa-sm text-white-50"></i> Tambah Pembayaran
@@ -37,6 +37,9 @@
                                 <td><img src="{{ asset('images/bukti-pembayaran/'.$item->bukti_pembayaran) }}" alt="foto" width="200px"></td>
                                 <td>Valid</td>
                                 <td>
+                                    <a href="{{ route('data-pembayaran.edit', $item->id) }}" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm rounded-circle border-0">
+                                        <i class="fas fa-pen fa-sm text-white-100"></i>
+                                    </a>
                                     <form class="d-inline" action="{{ route('data-pembayaran.destroy', $item->id) }}" method="post">
                                         @csrf
                                         @method('delete')

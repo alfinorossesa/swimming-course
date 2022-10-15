@@ -38,6 +38,20 @@ class DataPembayaranController extends Controller
         return redirect()->route('data-pembayaran.index')->with('success', 'Data Pembayaran berhasil ditambahkan!');
     }
 
+    public function edit(DataPembayaran $dataPembayaran)
+    {
+        $siswa = DataSiswa::latest()->get();
+
+        return view('admin.data-pembayaran.edit', compact('dataPembayaran', 'siswa'));
+    }
+
+    public function update(DataPembayaranRequest $request, DataPembayaran $dataPembayaran)
+    {
+        $this->dataPembayaranService->updateData($dataPembayaran, $request);
+
+        return redirect()->route('data-pembayaran.index')->with('update', 'Data Pembayaran berhasil diupdate!');
+    }
+
     public function destroy(DataPembayaran $pembayaran)
     {
         $pembayaran->delete();

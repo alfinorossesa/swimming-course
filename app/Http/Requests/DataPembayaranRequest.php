@@ -23,11 +23,17 @@ class DataPembayaranRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'siswa_id' => 'required',
             'tanggal_bayar' => 'required',
             'jumlah_bayar' => 'required|digits_between:1,9',
             'bukti_pembayaran' => 'required|file|image'
         ];
+
+        if (request()->isMethod('PUT')) {
+            $rules['bukti_pembayaran'] = '';
+        }
+        
+        return $rules;
     }
 }

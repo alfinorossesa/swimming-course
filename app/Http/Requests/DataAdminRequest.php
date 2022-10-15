@@ -24,17 +24,10 @@ class DataAdminRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'nama' => 'required|min:5|max:100',
-            'no_telp' => 'required|min:11|max:13',
-            'alamat' => 'required',
-            'username' => 'required|min:5|unique:users,username',
-            'password' => 'required|min:8'
+            'password_lama' => 'required',
+            'password' => 'required|confirmed'
         ];
 
-        if (request()->isMethod('PUT')) {
-            $rules['username'] = '';
-        }
-        
         return $rules;
     }
 }

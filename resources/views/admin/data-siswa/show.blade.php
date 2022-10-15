@@ -89,7 +89,6 @@
                             <th>Jumlah Bayar</th>
                             <th>Bukti Bayar</th>
                             <th>Status</th>
-                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -101,13 +100,6 @@
                                 <td>Rp. {{ number_format($item->jumlah_bayar) }}</td>
                                 <td><img src="{{ asset('images/bukti-pembayaran/'.$item->bukti_pembayaran) }}" alt="foto" width="200px"></td>
                                 <td>Valid</td>
-                                <td>
-                                    <form class="d-inline" action="{{ route('data-pembayaran.destroy', $item->id) }}" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" class="btn btn-danger btn-sm rounded-circle border-0" onclick="return confirm('Apakah anda yakin ?')"><i class="fas fa-trash fa-sm text-white-100"></i></button>
-                                    </form>
-                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -134,7 +126,6 @@
                                 <th>Tgl. Latihan</th>
                                 <th>Lokasi</th>
                                 <th>Keterangan</th>
-                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -146,13 +137,6 @@
                                 <td>{{ date('d-M-Y', strtotime($item->tanggal_latihan)) }}</td>
                                 <td>{{ $item->lokasi }}</td>
                                 <td>{{ $item->keterangan }}</td>
-                                <td>
-                                    <form class="d-inline" action="{{ route('data-perkembangan-siswa.destroy', $item->id) }}" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" class="btn btn-danger btn-sm rounded-circle border-0" onclick="return confirm('Apakah anda yakin ?')"><i class="fas fa-trash fa-sm text-white-100"></i></button>
-                                    </form>
-                                </td>
                             </tr>
                         @endforeach
                         </tbody>

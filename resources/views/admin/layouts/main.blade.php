@@ -61,9 +61,17 @@
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="{{ route('data-admin.profile', auth()->user()->id) }}">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="{{ route('data-admin.gantiPassword', auth()->user()->id) }}">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Ubah Password
+                                </a>
                                 <form action="{{ route('logout') }}" method="post">
                                     @csrf
-                                    <button class="dropdown-item" type="submit"> <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>Logout</button>
+                                    <button class="dropdown-item text-danger" type="submit"> <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>Logout</button>
                                 </form>
                             </div>
                         </li>

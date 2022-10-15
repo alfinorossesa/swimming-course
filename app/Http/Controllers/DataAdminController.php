@@ -4,52 +4,46 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\DataAdminRequest;
 use App\Models\User;
-use App\Services\DataAdminService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 class DataAdminController extends Controller
 {
-    protected $dataAdminService;
-    public function __construct(DataAdminService $dataAdminService)
+    public function profile(User $user)
     {
-        $this->dataAdminService = $dataAdminService;
+        return view('admin.data-admin.profile', compact('user'));
     }
 
-    public function index()
+    public function updateProfile(Request $request, User $user)
     {
-        $admins = User::where('isAdmin', true)->latest()->get();
+        $attr = $request->validate([
+            'nama' => 'required|min:3',
+            'username' => 'required',
+            'alamat' => 'required',
+            'no_telp' => 'required'
+        ]);
 
-        return view('admin.data-admin.index', compact('admins'));
+        $user->update($attr);
+
+        return redirect()->back()->with('success', 'Profile Berhasil Diupdate!');
     }
 
-    public function create()
+    public function gantiPassword(User $user)
     {
-        return view('admin.data-admin.create');
+        return view('admin.data-admin.gantiPassword', compact('user'));
     }
 
-    public function store(DataAdminRequest $request)
+    public function updatePassword(DataAdminRequest $request, User $user)
     {
-        $this->dataAdminService->storeData($request);
+        if (Hash::check($request->password_lama, $user->password)) {
+            $user->update($request->only('password'));
 
-        return redirect()->route('data-admin.index')->with('success', 'Admin berhasil ditambahkan!');
-    }
+            return redirect()->back()->with('success', 'Password Berhasil Diupdate!');
+        }
 
-    public function edit(User $user)
-    {
-        return view('admin.data-admin.edit', compact('user'));
-    }
-
-    public function update(DataAdminRequest $request, User $user)
-    {
-        $this->dataAdminService->updateData($user, $request);
-
-        return redirect()->route('data-admin.index')->with('update', 'Admin berhasil diupdate!');
-    }
-
-    public function destroy(User $user)
-    {
-        $user->delete();
-
-        return redirect()->route('data-admin.index')->with('destroy', 'Admin berhasil dihapus!');
+        throw ValidationException::withMessages([
+            'password_lama' => 'password do not match'
+        ]);
     }
 }

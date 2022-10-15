@@ -16,7 +16,7 @@ class PerkembanganLatihanResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'siswa' => $this->siswa->nama,
+            'siswa' => $this->siswa->id,
             'pelatih' => $this->pelatih->nama,
             'tanggal_latihan' => $this->tanggal_latihan,
             'lokasi' => $this->lokasi,

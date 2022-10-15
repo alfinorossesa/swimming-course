@@ -6,7 +6,7 @@
     </a>
 </div>
 
-<div class="card shadow mt-3 mx-5">
+<div class="card shadow mt-3 mb-5 mx-5">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Edit Pelatih</h6>
     </div>
